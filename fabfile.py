@@ -14,17 +14,37 @@ env.port = '22222'
 env.user = 'root'
 env.code_user = 'root'
 env.prod_user = 'www'
-env.webserver = '4zu1'
-env.code_root = '4zu1'
+env.webserver = '/opt/webserver/buildout.webserver'
+env.code_root = '/opt/webserver/buildout.webserver'
 env.host_root = '/opt/sites'
 
-env.hosts = ['4zu1']
+env.hosts = ['6zu4']
 env.hosted_sites = [
-    'example.tld',
+    'xpose',
+    'folia',
+    'tophotel',
+    'adk',
+    'rheacting',
+    're',
+    'newport',
+    'ro',
+    'oh',
+    's14',
+    'wigo',
 ]
 
 env.hosted_sites_locations = [
-    '/opt/sites/example.tld/buildout.example.tld',
+    '/opt/sites/xpose/buildout.xpose',
+    '/opt/sites/folia/buildout.folia',
+    '/opt/sites/tophotel/buildout.tophotel',
+    '/opt/sites/adk/buildout.adk',
+    '/opt/sites/rheacting/buildout.rheacting',
+    '/opt/sites/re/buildout.re',
+    '/opt/sites/newport/buildout.newport',
+    '/opt/sites/ro/buildout.ro',
+    '/opt/sites/oh/buildout.oh',
+    '/opt/sites/oh/buildout.s14',
+    '/opt/sites/oh/buildout.wigo',
 ]
 
 
@@ -60,7 +80,7 @@ def restart_haproxy():
 
 
 @task
-def supervisorctl(*cmd):
+def ctl(*cmd):
     """Runs an arbitrary supervisorctl command."""
     with cd(env.webserver):
         run('nice bin/supervisorctl ' + ' '.join(cmd))
