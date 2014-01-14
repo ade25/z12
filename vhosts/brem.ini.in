@@ -1,0 +1,85 @@
+# Documentation for this file is available at:
+#   kotti.readthedocs.org/en/latest/index.html#configuration-and-customization
+
+[app:kotti]
+use = egg:kotti
+
+# kotti.site_title: your site's title
+kotti.site_title = Kotti Basic Blogging WIP
+
+
+# kotti.secret: defines the initial password of the 'admin' user
+kotti.secret = qwerty
+
+
+# sqlalchemy.url: the database that you want to use, defaults to SQLite
+# see http://www.sqlalchemy.org/docs/core/engines.html#database-urls
+sqlalchemy.url = sqlite:///%(here)s/Kotti.db
+
+
+# mail.default_sender: configure the 'from' address of emails sent by Kotti
+mail.default_sender = yourname@yourhost
+
+
+# kotti.includes: include add-ons; an example:
+# kotti.includes = kotti_twitter.include_search_widget
+
+
+# kotti.configurators: another hook for add-ons
+# kotti_tinymce should always be present (unless you don't want WYSIWYG editing)
+kotti.configurators =
+    kotti_tinymce.kotti_configure
+    kotti_blog.kotti_configure
+    kotti_mb.kotti_configure
+
+# kotti.asset_overrides: override Kotti's templates and resources; an example:
+kotti.asset_overrides = kotti_mb:kotti-overrides/
+
+kotti_blog.asset_overrides = kotti_mb:kotti-blog-overrides/
+
+kotti.fanstatic.edit_needed =
+    kotti.fanstatic.edit_needed_js
+    kotti_mb.fanstatic.kotti_mb_css
+#    kotti_mb.fanstatic.kotti_mb_js
+
+kotti.fanstatic.view_needed =
+    kotti.fanstatic.view_needed_js
+    kotti_mb.fanstatic.kotti_mb_js_holder
+    kotti_mb.fanstatic.kotti_mb_css
+
+
+kotti.populators = 
+    kotti_mb.populators.populate
+
+# pyramid.default_locale_name: set the unlessr interface language
+pyramid.default_locale_name = de
+
+
+pyramid.includes =
+  pyramid_tm
+#  pyramid_debugtoolbar
+
+
+[filter:fanstatic]
+use = egg:fanstatic#fanstatic
+
+
+[pipeline:main]
+pipeline =
+    fanstatic
+    kotti
+
+
+#[server:main]
+#use = egg:waitress#main
+#host = 127.0.0.1
+#port = 5000
+
+[uwsgi]
+socket = 127.0.0.1:5001
+#socket = /home/kotti/<your_domain>.sock
+master = true
+processes = 4
+home = /opt/sites/brem/
+chmod-socket = 666
+processes = 1
