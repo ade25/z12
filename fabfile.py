@@ -18,7 +18,7 @@ env.webserver = '/opt/webserver/buildout.webserver'
 env.code_root = '/opt/webserver/buildout.webserver'
 env.host_root = '/opt/sites'
 
-env.hosts = ['6zu4']
+env.hosts = ['z12']
 env.hosted_sites = [
     'xpose',
     'folia',
