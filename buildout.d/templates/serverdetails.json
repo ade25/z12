@@ -15,7 +15,7 @@
       "title": "${sites:zope4}",
       "type": "plone",
       "port": "${ports:zope4}",
-      "url": "${hosts:zope4}"
+      "url": "${hosts:zope4-1}"
     },
     {
       "title": "${sites:zope5}",
