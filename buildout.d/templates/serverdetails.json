@@ -5,12 +5,6 @@
   "varnish": "4.0.0",
   "haproxy": "1.5-dev19",
   "sites": [
-    { 
-      "title": "${sites:zope1}",
-      "type": "plone",
-      "port": "${ports:zope1}",
-      "url": "${hosts:zope1}"
-    },
     {
       "title": "${sites:zope2}",
       "type": "plone",
@@ -28,12 +22,6 @@
       "type": "plone",
       "port": "${ports:zope4}",
       "url": "${hosts:zope4-1}"
-    },
-    {
-      "title": "${sites:zope5}",
-      "type": "plone",
-      "port": "${ports:zope5}",
-      "url": "${hosts:zope5}"
     },
     {
       "title": "${sites:zope6}",
